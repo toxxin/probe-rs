@@ -52,6 +52,7 @@ mod flash_algorithm;
 mod flasher;
 mod loader;
 mod progress;
+mod read;
 mod visualizer;
 
 use builder::*;
@@ -64,4 +65,5 @@ pub use error::*;
 pub use flash_algorithm::*;
 pub use loader::*;
 pub use progress::*;
+pub use read::*;
 pub use visualizer::*;
