@@ -232,3 +232,16 @@ pub fn erase_sectors(
 
     Ok(())
 }
+
+// TODO: move it to a separate file
+pub fn read_mem(session: &mut Session, address: u64, data: &mut [u8]) -> Result<(), FlashError> {
+
+    let algo = session.target().flash_algorithms[0].clone();
+
+    let mut flasher = Flasher::new(session, 0, &algo, FlashProgress::new(|_| {}))?;
+
+    flasher.verify_custom(address, data);
+
+    Ok(())
+}
+

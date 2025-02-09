@@ -98,6 +98,8 @@ pub fn extract_flash_algo(
 
             _ => {}
         }
+        // TODO: it's not possible to set stack_size from config/yaml file
+        algo.stack_size = Some(4096);
     }
 
     if fixed_load_address {
