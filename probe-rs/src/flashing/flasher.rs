@@ -335,6 +335,14 @@ impl<'session> Flasher<'session> {
         result
     }
 
+    pub(super) fn verify_custom(&mut self, address: u64, data: &mut [u8]) -> Result<(), FlashError> {
+        self.run_verify(|active| {
+            active.read_flash(address, data);
+            Ok(true)
+        });
+        Ok(())
+    }
+
     /// Verifies all the to-be-written bytes of `layout`.
     pub(super) fn verify(
         &mut self,
